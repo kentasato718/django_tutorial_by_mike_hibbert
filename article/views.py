@@ -7,11 +7,15 @@ def articles(request):
 	session_language = 'en-gb'
 	
 	if 'lang' in request.COOKIES:
-		language = resquest.COOKIES['lang']
+		language = request.COOKIES['lang']
+		
+	if 'lang' in request.session:
+		session_language = request.session['lang']
 		
 	return render_to_response('articles.html',
 								{'articles' : Article.objects.all(),
-								'language' : language }
+								'language' : language,
+								'session_language': session_language }
 	)
 def article(request, article_id=1):
 	return render_to_response('article.html',
@@ -22,4 +26,5 @@ def language(request, language='en-gb'):
 	
 	response.set_cookie("lang", language)
 	
+	request.session['lang'] = language
 	return response
