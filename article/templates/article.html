@@ -10,6 +10,8 @@
 {% block content %}
 <h1>{{ article.title }}</h1>
 <P>{{ article.body }}</p>
+<p>{{article.likes}} people liked this article</a></p>
+<p><a href="/articles/like/{{article.id}}">Like</a></p>
 
 
 {% endblock %}
