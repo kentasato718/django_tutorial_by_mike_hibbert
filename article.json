@@ -1,0 +1,42 @@
+[
+{
+    "pk": 1, 
+    "model": "article.article", 
+    "fields": {
+        "body": "What distinguishes Pragmatic Programmers? We feel it's an attitude, a style, a philosophy of approaching problems and their solutions. They think beyond the immediate problem, always trying to place it in its larger context, always trying to be aware of the bigger picture. After all, without this larger context, how can you be pragmatic? How can you make intelligent compromises and informed decisions?\r\n", 
+        "pub_date": "2014-04-28T01:35:49Z", 
+        "likes": 3, 
+        "title": "test 1"
+    }
+},
+{
+    "pk": 2, 
+    "model": "article.article", 
+    "fields": {
+        "body": "\r\nAnother key to their success is that they take responsibility for everything they do, which we discuss in The Cat Ate My Source Code. Being responsible, Pragmatic Programmers won't sit idly by and watch their projects fall apart through neglect. In Software Entropy, we tell you how to keep your projects pristine.", 
+        "pub_date": "2014-04-28T01:36:25Z", 
+        "likes": 2, 
+        "title": "test 2"
+    }
+},
+{
+    "pk": 3, 
+    "model": "article.article", 
+    "fields": {
+        "body": "Most people find change difficult to accept, sometimes for good reasons, sometimes because of plain old inertia. In Stone Soup and Boiled Frogs, we look at a strategy for instigating change and (in the interests of balance) present the cautionary tale of an amphibian that ignored the dangers of gradual change.", 
+        "pub_date": "2014-04-28T01:36:36Z", 
+        "likes": 0, 
+        "title": "test 3"
+    }
+},
+{
+    "pk": 4, 
+    "model": "article.article", 
+    "fields": {
+        "body": "ohvohao h vj[diaeoha ohopinvae nbou nonvaopewnvon ononevoainv onev naonvo oienvaoinv oanv oenvoinevoi aonvoinv aoenvoinv anvoinev aonev o", 
+        "pub_date": "2014-05-04T15:00:00Z", 
+        "likes": 1, 
+        "title": "test 7"
+    }
+}
+]
