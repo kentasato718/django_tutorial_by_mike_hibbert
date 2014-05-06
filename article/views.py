@@ -1,9 +1,10 @@
 from django.shortcuts import render_to_response
-from article.models import Article
+from article.models import Article, Comment
 from django.http import HttpResponse
-from forms import ArticleForm
+from forms import ArticleForm, CommentForm
 from django.http import HttpResponseRedirect
 from django.core.context_processors import csrf
+from django.utils import timezone
 
 def articles(request):
 	language = 'en-gb'
@@ -15,11 +16,16 @@ def articles(request):
 	if 'lang' in request.session:
 		session_language = request.session['lang']
 		
-	return render_to_response('articles.html',
-								{'articles' : Article.objects.all(),
-								'language' : language,
-								'session_language': session_language }
-	)
+	args = {}
+	args.update(csrf(request))
+	
+	args['articles'] = Article.objects.all()
+	args['language'] = language
+	args['session_language'] = session_language
+		
+	return render_to_response('articles.html',args)
+	
+	
 def article(request, article_id=1):
 	return render_to_response('article.html',
 	{'article': Article.objects.get(id=article_id) })
@@ -59,3 +65,36 @@ def like_article(request, article_id):
 		a.save()
 		
 	return HttpResponseRedirect('/articles/get/%s' % article_id)
+	
+def add_comment(request, article_id):
+	a = Article.objects.get(id=article_id)
+	
+	if request.method == "POST":
+		f = ComentForm(request.POST)
+		if f.is_valid(commit=False):
+			c.pub_date = timezone.now()
+			c.article = a
+			c.save()
+		
+		return HttpResponseRedirect('/articles/get/%s' % article_id)
+		
+	else:
+		f = CommentForm()
+		
+	args = {}
+	args.update(csrf(request))
+	
+	args['article'] = a
+	args['form'] = f
+	
+	return render_to_response('add_comment.html', args)
+	
+def search_titles(request):
+	if request.method == "POST":
+		search_text = request.POST['search_text']
+	else:
+		search_text = ''
+		
+	articles = Article.objects.filter(title__contains=search_text)
+	
+	return render_to_response('ajax_search.html', {'articles' : articles})
